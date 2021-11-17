@@ -40,6 +40,7 @@ import org.apache.kafka.connect.source.SourceRecord;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalLong;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -200,6 +201,11 @@ public class MySqlTestUtils {
                 boolean isRestored, OperatorStateStore operatorStateStore) {
             this.isRestored = isRestored;
             this.operatorStateStore = operatorStateStore;
+        }
+
+        @Override
+        public OptionalLong getRestoredCheckpointId() {
+            return OptionalLong.of(1);
         }
 
         @Override
