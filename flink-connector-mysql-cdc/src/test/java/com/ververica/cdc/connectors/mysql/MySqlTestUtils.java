@@ -205,7 +205,7 @@ public class MySqlTestUtils {
 
         @Override
         public OptionalLong getRestoredCheckpointId() {
-            return OptionalLong.of(1);
+            return OptionalLong.empty();
         }
 
         @Override
