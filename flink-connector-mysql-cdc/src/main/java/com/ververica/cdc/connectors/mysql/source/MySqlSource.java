@@ -70,12 +70,12 @@ import static com.ververica.cdc.connectors.mysql.debezium.DebeziumUtils.openJdbc
  * <pre>
  *     1. The source supports parallel capturing table change.
  *     2. The source supports checkpoint in split level when read snapshot data.
- *     3. The source does need apply any lock of MySQL.
+ *     3. The source doesn't need apply any lock of MySQL.
  * </pre>
  *
  * <pre>{@code
  * MySqlSource
- *     .<RowData>builder()
+ *     .<String>builder()
  *     .hostname("localhost")
  *     .port(3306)
  *     .databaseList("mydb")
@@ -115,6 +115,10 @@ public class MySqlSource<T>
             DebeziumDeserializationSchema<T> deserializationSchema) {
         this.configFactory = configFactory;
         this.deserializationSchema = deserializationSchema;
+    }
+
+    public MySqlSourceConfigFactory getConfigFactory() {
+        return configFactory;
     }
 
     @Override
